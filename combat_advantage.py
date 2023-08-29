@@ -1,3 +1,4 @@
+#Just a code example where I got confused and had to ask for help
 player_power = 101
 enemy_defense = 100
 advantage, disadvantage, evenly_matched = False, False, False

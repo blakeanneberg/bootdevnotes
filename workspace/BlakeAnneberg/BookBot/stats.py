@@ -12,3 +12,12 @@ def char_text(book_text):
         else:
             characters[letter] = 1
     return characters
+
+def sort_on(d):
+    return d["num"]
+def chars_dict_to_sorted_list(chars_dict):
+    sorted_list =[]
+    for ch, count in chars_dict.items():
+        sorted_list.append({"char": ch, "num": count})
+    sorted_list.sort(reverse=True, key=sort_on)
+    return sorted_list 

@@ -6,6 +6,9 @@
 ## git switch
 - moves brach
 
+## git switch -c
+- create new branch off man 
+
 ## git branch
 - shows what branch your on
 
@@ -14,3 +17,5 @@
 
 ## git commit --amend -m "F: Merge branch 'add_classics'"
 - change commit message
+
+

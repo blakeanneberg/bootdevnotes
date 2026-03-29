@@ -37,3 +37,27 @@ So the relationship is:
 - Not all variables are parameters (only the ones in the function definition are)
 - Think of it like this: parameters are variables that come into your function from the outside, while other variables are ones you create inside your function to help you do your work.
 
+
+## Code
+
+- Looping over a list to call a function - for item in list: do_something(item) is a fundamental pattern you'll use constantly.
+
+- Using index-based loops when you need the position - for i in range(0, len(list)) gives you both the index i and access to the item via list[i]. Use this when the index itself matters.
+
+Copying a list before mutating it - list.copy() creates an independent copy so you can safely del from it without destroying the original. If you'd skipped the copy, your dragons list would have shrunk each iteration and broken everything.
+
+
+### filter-and-collect loop:
+````
+results = []
+for item in collection:
+    if some_condition(item):
+        results.append(item)
+return results
+````
+
+You'll use this pattern constantly - any time you need to filter a list down to a subset based on some condition. It's so common that Python even has a built-in shorthand for it called a list comprehension:
+````
+return [unit for unit in units if unit.in_area(...)]
+````
+Both are equivalent. The explicit loop is easier to read when starting out; the list comprehension is more idiomatic Python once you're comfortable with it.

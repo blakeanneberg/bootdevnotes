@@ -61,3 +61,34 @@ You'll use this pattern constantly - any time you need to filter a list down to 
 return [unit for unit in units if unit.in_area(...)]
 ````
 Both are equivalent. The explicit loop is easier to read when starting out; the list comprehension is more idiomatic Python once you're comfortable with it.
+
+## Inheritance 
+1. Why super().__init__() and what does it do?
+
+When a child class has its own constructor, it replaces the parent's constructor entirely. That means the parent's setup code won't run unless you explicitly call it. super().__init__() is just you saying "run the parent's constructor first, then I'll add my own stuff."
+```
+class Vehicle:
+    def __init__(self, speed):
+        self.speed = speed
+
+class Car(Vehicle):
+    def __init__(self, speed, num_doors):
+        super().__init__(speed)   # sets self.speed
+        self.num_doors = num_doors  # car-only variable
+```
+2. When does a child need its own constructor?
+
+Only when it has extra instance variables the parent doesn't know about. If a child has no new variables, it can skip the constructor entirely and just inherit the parent's.
+```
+class SportsCar(Vehicle):
+    pass  # inherits Vehicle's __init__ as-is
+````
+3. Method overriding
+
+A child can redefine any parent method. When called on the child, Python uses the child's version. You can still reach the parent's version with super() if you need it as a base.
+````
+class Car(Vehicle):
+    def describe(self):
+        base = super().describe()   # parent's version
+        return base + ", has doors"  # extend it
+````
